@@ -1,18 +1,18 @@
 import React from 'react';
 import classNames from 'classnames'
-
+// 按钮大小枚举
 export enum ButtonSize {
     Large = 'lg',
     Small = 'sm'
 }
-
+// 按钮类型枚举
 export enum ButtonType {
     Primary = 'primary',
     Default = 'default',
     Danger = 'danger',
     Link = 'link'
 }
-
+// 按钮props传入数据接口
 interface BaseButtonProps {
     className?: string;
     disabled?: boolean;
@@ -28,8 +28,6 @@ type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElemen
 type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
 // 事件合并 Partial a链接和按钮属性事件都为可选
 export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
-
-// const Button: React.FC<BaseButtonProps> = (props) => {
 
 const Button: React.FC<ButtonProps> = (props) => {
     const { btnType, className, disabled, size, children, href, ...restProps } = props
