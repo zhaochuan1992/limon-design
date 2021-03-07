@@ -9,7 +9,7 @@ function App() {
         <Button onClick={(e) => { alert('ddd') }}> hello </Button>
         <Button btnType={ButtonType.Primary} size={ButtonSize.Large}> hellodd </Button>
         <Button btnType={ButtonType.Danger} size={ButtonSize.Large}> hello </Button>
-        <p>
+        {/* <p>
           Edit <code>src/App.tsx</code> and save to reload.
         </p>
         <a
@@ -19,7 +19,7 @@ function App() {
           rel="noopener noreferrer"
         >
           Learn React
-        </a>
+        </a> */}
 
       </header>
     </div>
