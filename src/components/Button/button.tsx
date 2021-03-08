@@ -13,12 +13,18 @@ export enum ButtonType {
     Link = 'link'
 }
 // 按钮props传入数据接口
-interface BaseButtonProps {
+export interface BaseButtonProps {
+    // 样式名
     className?: string;
+    // 是否禁选
     disabled?: boolean;
+    // 按钮大小
     size?: ButtonSize;
+    // 按钮类型
     btnType?: ButtonType;
-    children: React.ReactNode;
+    // 子
+    children?: React.ReactNode;
+    // a 链接
     href?: string;
 }
 
@@ -33,7 +39,7 @@ const Button: React.FC<ButtonProps> = (props) => {
     const { btnType, className, disabled, size, children, href, ...restProps } = props
 
     // btn , btn-lg , btn-primary 根据传入的值，判断样式类名
-    const classes = classNames('btn', className, {
+    const classes = classNames('lim-btn', className, {
         [`btn-${btnType}`]: btnType,
         [`btn-${size}`]: size,
         // 如果带有link属性并且带有禁用标识
