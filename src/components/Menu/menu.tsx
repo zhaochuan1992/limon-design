@@ -1,5 +1,6 @@
 import React, { useState, createContext } from 'react';
 import classNames from 'classnames'
+import { MenuItemProps } from './menuItem'
 
 type SelectCallBack = (selectedIndex: number) => void;
 
@@ -36,7 +37,8 @@ const Menu: React.FC<MenuProps> = (props) => {
     const [currentActive, setActive] = useState(defaultIndex)
 
     const classes = classNames('lim-menu', className, {
-        'menu-vertical': mode === 'vertical'
+        'menu-vertical': mode === 'vertical',
+        'menu-horizontal': mode !== 'vertical',
     })
     // 用户触发的事件
     const handleClick = (index: number) => {
@@ -51,10 +53,24 @@ const Menu: React.FC<MenuProps> = (props) => {
         onSelect: handleClick
     }
 
+    const renderChildren = () => {
+        return React.Children.map(children, (child, index) => {
+            const childElement = child as React.FunctionComponentElement<MenuItemProps>
+            const { displayName } = childElement.type
+            if (displayName === 'MenuItem' || displayName === 'SubMenu') {
+                return React.cloneElement(childElement, {
+                    index: index
+                })
+            } else {
+                console.error("Warning: Menu has a child which is not a MenuItem component")
+            }
+        })
+    }
+
     return (
         <ul className={classes} style={style}>
             <MenuContext.Provider value={passenContext}>
-                {children}
+                {renderChildren()}
             </MenuContext.Provider>
         </ul>
     )
