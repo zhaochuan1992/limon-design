@@ -5,7 +5,7 @@ import { MenuContext } from './menu'
 // 子menu API
 export interface MenuItemProps {
     // 选中下标
-    index?: number;
+    index?: string;
     // 是否禁选
     disabled?: boolean;
     // 样式名
@@ -25,7 +25,7 @@ const MenuItem: React.FC<MenuItemProps> = (props) => {
     })
 
     const handleClick = () => {
-        if (context.onSelect && !disabled && (typeof index === 'number')) {
+        if (context.onSelect && !disabled && (typeof index === 'string')) {
             context.onSelect(index)
         }
     }
