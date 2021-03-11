@@ -1,50 +1,81 @@
-import React from 'react';
-import classNames from 'classnames'
+import React, { useState } from 'react';
+import classnames from 'classnames';
+// import Transition from "../Transition/transition";
+// import { Icon } from "../icon/icon";
 
-// 提示框类型枚举
+// Alert类型枚举
 export enum AlertType {
-    Primary = "success",
-    Default = 'default',
-    Danger = 'danger',
-    Warning = 'warning'
+    Success = 'success',
+    Primary = 'primary',
+    Warning = 'warning',
+    Danger = 'danger'
 }
-// 提示框props传入数据接口
-interface BaseAlertProps {
-    title: string;
-    description?: string;
-    className?: string;
+
+export interface IAlertProps {
+    /**
+     * the title
+     */
+    title?: string;
+    /**
+     * whether this alert can close.
+     */
     closable?: boolean;
-    type?: AlertType;
+    /**
+     * the close icon
+     */
+    customClose?: string;
+    /**
+     * onClose action
+     */
+    onClose?: (() => void);
+    /**
+     * the description of this alert
+     */
     children?: React.ReactNode;
+    /**
+     * alert type
+     */
+    type: AlertType;
 }
 
-// // 处理按钮事件
-// type NativeButtonProps = BaseButtonProps & React.ButtonHTMLAttributes<HTMLElement>
-// // 处理a链接事件
-// type AnchorButtonProps = BaseButtonProps & React.AnchorHTMLAttributes<HTMLElement>
-// // 事件合并 Partial a链接和按钮属性事件都为可选
-// export type ButtonProps = Partial<NativeButtonProps & AnchorButtonProps>
+/**
+ * This is an alert component. It can have multiple props like title, type, closeable,customClose.
+ */
+const Alert: React.FC<IAlertProps> = (props) => {
+    const { title, closable, type, customClose, onClose, children } = props
 
-const Alert: React.FC<BaseAlertProps> = (props) => {
-    const { title, className, type, closable, description, children, ...restProps } = props
+    // const customCloseP = customClose || <Icon icon="times" className="window-close" size='lg' />
+    const customCloseP = customClose
+    const classes = classnames('alert', {
+        [`alert-${type}`]: type
+    });
 
-    const classes = classNames('alert', className, {
-        [`alert-${type}`]: type,
-    })
+    const handleClick = () => {
+        setVisible(false);
+        if (onClose) {
+            onClose();
+        }
+    }
 
+    const [visible, setVisible] = useState(true);
     return (
-        <div className={classes} {...restProps}>
-            <span >
-                {title}
-            </span>
+        // <Transition in={visible} animation="zoom-in-left" timeout={300} wrapper={true}>
+        //     <div className={classes}>
+        //         {title ? <h4 className="alert-title">{title}</h4> : null}
+        //         <p className="alert-message">{children}</p>
+        //         {closable ? <i onClick={handleClick}>{customCloseP}</i> : null}
+        //     </div>
+        // </Transition>
+        <div className={classes}>
+            {title ? <h4 className="alert-title">{title}</h4> : null}
+            <p className="alert-message">{children}</p>
+            {closable ? <i onClick={handleClick}>{customCloseP}</i> : null}
         </div>
-    )
-
+    );
 }
 
 Alert.defaultProps = {
-    closable: false,
-    type: AlertType.Default
+    type: AlertType.Primary
 }
 
-export default Alert;
+export default Alert
