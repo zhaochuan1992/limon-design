@@ -4,15 +4,17 @@ import Alert, { AlertType } from './components/Alert/alert';
 import Menu from './components/Menu/menu';
 import MenuItem from './components/Menu/menuItem';
 import SubMenu from './components/Menu/subMenu';
-
+import Icon from "./components/Icon/icon";
 import Tabs from './components/Tabs/tabs';
 import TabsItem from './components/Tabs/tabsItem';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <Menu mode={'vertical'} defaultOpenSubMenus={['5']} defaultIndex='0' onSelect={index => console.log(index)}>
+
+        <Menu mode={'horizontal'} defaultOpenSubMenus={['5']} defaultIndex='0' onSelect={index => console.log(index)}>
           <MenuItem>link1</MenuItem>
           <MenuItem disabled>link2</MenuItem>
           <MenuItem>link3</MenuItem>
@@ -33,8 +35,9 @@ function App() {
         <Alert title={'dddaa'} type={AlertType.Primary} closable />
 
         <Tabs styleType='outline'>
-          <TabsItem label='wdawd'></TabsItem>
-          <TabsItem label='wdawd2'></TabsItem>
+          <TabsItem label='wdawd1'>wdwad</TabsItem>
+          <TabsItem label='wdawd2' disabled>refregerg</TabsItem>
+          <TabsItem label='wdawd3'>regerg</TabsItem>
         </Tabs>
 
         {/* <p>

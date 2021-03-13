@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import classnames from 'classnames';
-// import Transition from "../Transition/transition";
-// import { Icon } from "../icon/icon";
+import Transition from "../Transition/transition";
+import Icon from "../Icon/icon";
 
 // Alert类型枚举
 export enum AlertType {
@@ -38,14 +38,11 @@ export interface IAlertProps {
     type: AlertType;
 }
 
-/**
- * This is an alert component. It can have multiple props like title, type, closeable,customClose.
- */
 const Alert: React.FC<IAlertProps> = (props) => {
     const { title, closable, type, customClose, onClose, children } = props
 
-    // const customCloseP = customClose || <Icon icon="times" className="window-close" size='lg' />
-    const customCloseP = customClose
+    const customCloseP = customClose || <Icon icon="times" className="window-close" size='lg' />
+
     const classes = classnames('alert', {
         [`alert-${type}`]: type
     });
@@ -59,18 +56,13 @@ const Alert: React.FC<IAlertProps> = (props) => {
 
     const [visible, setVisible] = useState(true);
     return (
-        // <Transition in={visible} animation="zoom-in-left" timeout={300} wrapper={true}>
-        //     <div className={classes}>
-        //         {title ? <h4 className="alert-title">{title}</h4> : null}
-        //         <p className="alert-message">{children}</p>
-        //         {closable ? <i onClick={handleClick}>{customCloseP}</i> : null}
-        //     </div>
-        // </Transition>
-        <div className={classes}>
-            {title ? <h4 className="alert-title">{title}</h4> : null}
-            <p className="alert-message">{children}</p>
-            {closable ? <i onClick={handleClick}>{customCloseP}</i> : null}
-        </div>
+        <Transition in={visible} animation="zoom-in-left" timeout={300} wrapper={true}>
+            <div className={classes}>
+                {title ? <h4 className="alert-title">{title}</h4> : null}
+                <p className="alert-message">{children}</p>
+                {closable ? <i onClick={handleClick}>{customCloseP}</i> : null}
+            </div>
+        </Transition>
     );
 }
 
