@@ -1,17 +1,11 @@
 import React from 'react';
 import classNames from 'classnames'
+
 // 按钮大小枚举
-export enum ButtonSize {
-    Large = 'lg',
-    Small = 'sm'
-}
+export type ButtonSize = 'lg' | 'sm'
 // 按钮类型枚举
-export enum ButtonType {
-    Primary = 'primary',
-    Default = 'default',
-    Danger = 'danger',
-    Link = 'link'
-}
+export type ButtonType = 'primary' | 'default' | 'danger' | 'link'
+
 // 按钮props传入数据接口
 export interface BaseButtonProps {
     // 样式名
@@ -43,10 +37,10 @@ const Button: React.FC<ButtonProps> = (props) => {
         [`btn-${btnType}`]: btnType,
         [`btn-${size}`]: size,
         // 如果带有link属性并且带有禁用标识
-        'disabled': (btnType === ButtonType.Link) && disabled
+        'disabled': (btnType === 'link') && disabled
     })
     // 如果有link并且有href 返回a 链接
-    if (btnType === ButtonType.Link && href) {
+    if (btnType === 'link' && href) {
         return (
             <a
                 href={href}
@@ -72,7 +66,7 @@ const Button: React.FC<ButtonProps> = (props) => {
 
 Button.defaultProps = {
     disabled: false,
-    btnType: ButtonType.Default
+    btnType: 'default'
 }
 
 export default Button;
