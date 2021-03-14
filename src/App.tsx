@@ -7,6 +7,7 @@ import SubMenu from './components/Menu/subMenu';
 import Icon from "./components/Icon/icon";
 import Tabs from './components/Tabs/tabs';
 import TabsItem from './components/Tabs/tabsItem';
+import Input from './components/Input/input';
 
 
 function App() {
@@ -32,13 +33,15 @@ function App() {
         <Button btnType={ButtonType.Primary} size={ButtonSize.Large}> hellodd </Button>
         <Button btnType={ButtonType.Danger} size={ButtonSize.Large}> hello </Button> */}
 
-        <Alert title={'dddaa'} type={AlertType.Primary} closable />
+        <Alert title={'dddaa'} type={AlertType.Primary} closable></Alert>
 
         <Tabs styleType='outline'>
           <TabsItem label='wdawd1'>wdwad</TabsItem>
           <TabsItem label='wdawd2' disabled>refregerg</TabsItem>
           <TabsItem label='wdawd3'>regerg</TabsItem>
         </Tabs>
+
+        <Input />
 
         {/* <p>
           Edit <code>src/App.tsx</code> and save to reload.
