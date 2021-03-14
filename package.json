@@ -1,0 +1,19 @@
+{
+  "name": "limon-design",
+  "version": "1.0.0",
+  "description": "<<<<<<< HEAD\r 一套基础React组件库\r =======",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhaochuan1992/limon-design.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhaochuan1992/limon-design/issues"
+  },
+  "homepage": "https://github.com/zhaochuan1992/limon-design#readme"
+}
