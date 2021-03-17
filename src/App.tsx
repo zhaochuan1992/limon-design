@@ -9,7 +9,8 @@ import Tabs from './components/Tabs/tabs';
 import TabsItem from './components/Tabs/tabsItem';
 import Input from './components/Input/input';
 import AutoComplete from './components/AutoComplete/autoComplete';
-
+import Upload from './components/Upload/upload';
+import Progress from './components/Progress/progress'
 
 function App() {
   const fetchSuggestions = () => {
@@ -41,6 +42,10 @@ function App() {
 
         <Alert title={'dddaa'} type={AlertType.Primary} closable></Alert>
 
+        <Progress
+          percent={15}
+        />
+
         <Tabs styleType='outline'>
           <TabsItem label='wdawd1'>wdwad</TabsItem>
           <TabsItem label='wdawd2' disabled>refregerg</TabsItem>
@@ -52,6 +57,11 @@ function App() {
         <AutoComplete
           fetchSuggestions={fetchSuggestions}
           onSelect={(item) => console.log(item)}
+        />
+
+        <Upload
+          action="http://api-mock/api/upload"
+
         />
 
         {/* <p>

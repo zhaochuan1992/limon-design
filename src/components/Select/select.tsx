@@ -1,9 +1,9 @@
-// // import { append, filter, indexOf, map, remove } from 'ramda';
+// import { append, filter, indexOf, map, remove } from 'ramda';
 import React, { useRef, useState } from 'react';
-// // import { Icon } from '../icon';
-// // import { Input } from '../Input/input';
-// // import classNames from "classnames";
-// // import useClickOutside from "../../hooks/useClickOutside";
+// import { Icon } from '../Icon/icon';
+// import { Input } from '../Input/input';
+// import classNames from "classnames";
+// import useClickOutside from "../../hooks/useClickOutside";
 
 // export interface SelectProps {
 //     /**

@@ -18,7 +18,7 @@ import "vikingship/dist/index.css";
 // 引入按钮组件
 import { Button } from "vikingship";
 
-<Button disabled> 禁点 </Button>
+<Button disabled> disabled </Button>
 <Button onClick={(e) => { alert('ddd') }}> 点击事件 </Button>
 <Button btnType='primary' size='lg'> 默认 </Button>
 <Button btnType='danger' size='sm'> 警告 </Button>
@@ -33,8 +33,11 @@ import { Button } from "vikingship";
 - Tabs 切换
 - Input 输入框
 - AutoComplete 关联搜索
+- Progress 进度条
+- Upload 上传
+- Select 选择器
 
 ### 后续计划
 
 - DatePicker 日期选择器
-- 业务组件
+- 更过的业务组件。。
