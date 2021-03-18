@@ -61,8 +61,11 @@ function App() {
 
         <Upload
           action="http://api-mock/api/upload"
-
-        />
+          multiple
+          drag
+        >
+          {/* <Button btnType='primary' size='lg'> 上传 </Button> */}
+        </Upload>
 
         {/* <p>
           Edit <code>src/App.tsx</code> and save to reload.

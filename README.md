@@ -35,9 +35,8 @@ import { Button } from "vikingship";
 - AutoComplete 关联搜索
 - Progress 进度条
 - Upload 上传
-- Select 选择器
 
 ### 后续计划
 
 - DatePicker 日期选择器
-- 更过的业务组件。。
+- 更多的业务组件。。

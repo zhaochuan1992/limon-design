@@ -1,7 +1,7 @@
 import React, { FC, useRef, ChangeEvent, useState } from 'react'
 import axios from 'axios'
 import UploadList from './uploadList'
-import Button from '../Button/button'
+import Dragger from './dragger'
 
 export type UploadFileStatus = 'ready' | 'uploading' | 'success' | 'error'
 
@@ -29,8 +29,9 @@ export interface UploadProps {
     onSuccess?: (data: any, file: File) => void
     // 上传失败生命周期函数
     onError?: (err: any, file: File) => void
-    // 
+    // 上传后
     onChange?: (file: File) => void
+    // 删除
     onRemove?: (file: UploadFile) => void;
     headers?: { [key: string]: any };
     name?: string;
@@ -142,16 +143,28 @@ const Upload: FC<UploadProps> = (props) => {
             raw: file
         }
 
-        setFileList([_file, ...fileList])
+        // setFileList([_file, ...fileList])
+
+        setFileList(prevList => {
+            return [_file, ...prevList]
+        })
 
         const formData = new FormData()
 
-        formData.append(file.name, file)
+        formData.append(name || 'file', file)
+
+        if (data) {
+            Object.keys(data).forEach(key => {
+                formData.append(key, data[key])
+            })
+        }
 
         axios.post(action, formData, {
             headers: {
+                ...headers,
                 'Content-Type': 'multipart/form-data'
             },
+            withCredentials,
             onUploadProgress: (e) => {
                 // 计算上传百分比
                 let percentage = Math.round((e.loaded * 100) / e.total) || 0;
@@ -190,21 +203,26 @@ const Upload: FC<UploadProps> = (props) => {
 
     return (
         <div className="lim-upload-component">
-            <div className="viking-upload-input"
+            <div className="lim-upload-input"
                 style={{ display: 'inline-block' }}
                 onClick={handleClick}>
-                <Button
-                    btnType="primary"
-                    onClick={handleClick}
-                >上传文件</Button>
+                {drag ?
+                    <Dragger onFile={(files) => { uploadFiles(files) }}>
+                        {children}
+                    </Dragger> :
+                    children
+                }
                 <input
-                    className='lim-file-input'
+                    className="lim-file-input"
                     style={{ display: 'none' }}
                     ref={fileInput}
                     onChange={handleFileChange}
-                    type='file'
+                    type="file"
+                    accept={accept}
+                    multiple={multiple}
                 />
             </div>
+
             <UploadList
                 fileList={fileList}
                 onRemove={handleRemove}
@@ -213,5 +231,8 @@ const Upload: FC<UploadProps> = (props) => {
     )
 }
 
+Upload.defaultProps = {
+    name: 'file'
+}
 
 export default Upload
