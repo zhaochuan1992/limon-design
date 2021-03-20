@@ -40,7 +40,7 @@ function App() {
         <Button btnType='primary' size='lg'> hellodd </Button>
         <Button btnType='danger' size='sm'> hello </Button>
 
-        <Alert title={'dddaa'} type={AlertType.Primary} closable></Alert>
+        {/* <Alert title={'dddaa'} type={AlertType.Primary} closable></Alert> */}
 
         <Progress
           percent={15}
@@ -80,7 +80,7 @@ function App() {
         </a> */}
 
       </header>
-    </div>
+    </div >
   );
 }
 

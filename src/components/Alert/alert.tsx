@@ -4,12 +4,7 @@ import Transition from "../Transition/transition";
 import Icon from "../Icon/icon";
 
 // Alert类型枚举
-export enum AlertType {
-    Success = 'success',
-    Primary = 'primary',
-    Warning = 'warning',
-    Danger = 'danger'
-}
+export type AlertType = 'primary' | 'warning' | 'success' | 'link'
 
 export interface IAlertProps {
     /**
@@ -67,7 +62,7 @@ const Alert: React.FC<IAlertProps> = (props) => {
 }
 
 Alert.defaultProps = {
-    type: AlertType.Primary
+    type: "primary"
 }
 
 export default Alert
