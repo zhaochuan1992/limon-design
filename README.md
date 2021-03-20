@@ -2,21 +2,21 @@
 
 ## 使用 React+typescript 搭建的基础组件库
 
-[![Build Status](https://travis-ci.com/vikingmute/vikingship.svg?token=mHoDqxyxXWX5BSpu8L9y&branch=master)](https://travis-ci.com/vikingmute/vikingship)
+[![npm](https://www.npmjs.com/package/limon-design)](https://www.npmjs.com/package/limon-design)
 
 ### 安装
 
 ```javascript
-npm install vikingship --save
+npm install limon-design --save
 ```
 
 ### 使用
 
 ```javascript
 // 加载样式
-import "vikingship/dist/index.css";
+import "limon-design/dist/index.css";
 // 引入按钮组件
-import { Button } from "vikingship";
+import { Button } from "limon-design";
 
 <Button disabled> disabled </Button>
 <Button onClick={(e) => { alert('ddd') }}> 点击事件 </Button>
