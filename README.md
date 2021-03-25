@@ -2,7 +2,7 @@
 
 ## 使用 React+typescript 搭建的基础组件库
 
-[![npm](https://www.npmjs.com/package/limon-design)](https://www.npmjs.com/package/limon-design)
+[![NPM version][npm-image]][npm-url]
 
 ### 安装
 
